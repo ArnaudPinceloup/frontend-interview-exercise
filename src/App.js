@@ -12,6 +12,12 @@ import UserInfo from './components/UserInfo';
 class App extends Component {
   state = {
     profiles: [],
+    modal: false,
+    selectedProfile: {
+      picture: null,
+      name: '',
+      points: 0
+    }
   };
 
   componentWillMount() {
@@ -20,18 +26,31 @@ class App extends Component {
     });
   }
 
+  // set selected profile in local state, and open modal
+  onSelectProfile = selectedProfile => {
+    this.setState({ selectedProfile });
+    this.toggleModal();
+  }
+
+  // toggle modal with local state
+  toggleModal = () => {
+    this.setState({modal: !this.state.modal});
+  }
+
   render() {
+    const {profiles, modal, selectedProfile: { picture, name, points }} = this.state;
+
     return (
       <div>
         <Ranking
-          profiles={this.state.profiles}
-          onSelectProfile={() => {}}
+          profiles={profiles}
+          onSelectProfile={this.onSelectProfile}
         />
-        <Modal show={false} onHide={() => {}}>
+        <Modal show={modal} onHide={this.toggleModal}>
           <UserInfo
-            picture={null}
-            name=""
-            points={0}
+            picture={picture}
+            name={name}
+            points={points}
           />
         </Modal>
       </div>

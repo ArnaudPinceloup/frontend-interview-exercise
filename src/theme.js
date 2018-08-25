@@ -23,6 +23,8 @@ export const neutrals = {
   borderLighter: '#ecf0f6',
   borderLight: '#e1e1e1',
   buttonDefaultColor: '#575757',
+  shadowBoxLight: '#DAE2E6',
+  backgroundLight: '#F7F9FB'
 };
 
 /**
@@ -32,6 +34,8 @@ export const spacings = {
   xs: 4,
   s: 8,
   m: 16,
+  ml: 18,
+  sm: 24,
   l: 32,
   xl: 64,
 };
